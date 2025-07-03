@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stylish Chat App</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/vue@3.4.15/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle" @click="toggleTheme">🌓</div>
+
+    <!-- Username Modal -->
+    <div v-if="showModal" class="modal-overlay">
+      <div class="modal">
+        <h2>Enter Your Name</h2>
+        <input v-model="usernameInput" type="text" placeholder="Your name..." />
+        <button @click="setUsername">LOGIN</button>
+      </div>
+    </div>
+
+    <!-- Chat Layout -->
+    <div class="chat-wrapper" v-if="!showModal">
+      <div class="sidebar">
+        <div class="tab" :class="{ active: currentTab === 'chat' }" @click="switchTab('chat')">💬 Chat</div>
+        <div class="tab" :class="{ active: currentTab === 'history' }" @click="switchTab('history')">📜 History</div>
+      </div>
+
+      <div class="main-chat">
+        <div class="chat-header">Real-Time Chat App
+            <button @click="logout" class="logout-btn">Logout</button>
+        </div>
+        <!-- Chat Tab -->
+        <div class="chat-box" v-if="currentTab === 'chat'" ref="chatBox">
+          <div v-for="msg in messages" :key="msg.time" class="chat-message" :class="{ own: msg.id === socketId }">
+            <div class="avatar">{{ msg.username[0].toUpperCase() }}</div>
+            <div>
+              <div class="msg-bubble">{{ msg.text }}</div>
+              <div class="timestamp">{{ formatTime(msg.time) }}</div>
+            </div>
+          </div>
+          <div class="typing-indicator" v-if="isTyping">
+            <div class="typing-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Tab -->
+        <div class="chat-box" v-if="currentTab === 'history'">
+          <div class="history-header">Chat History</div>
+          <div v-if="!historyMessages.length" class="no-history-msg">No previous messages</div>
+          <div v-for="msg in historyMessages" :key="msg.time" class="history-card">
+            <div class="avatar">{{ msg.username[0].toUpperCase() }}</div>
+            <div class="history-content">
+              <div class="history-user">{{ msg.username }}</div>
+              <div class="history-text">{{ msg.text }}</div>
+              <div class="history-time">{{ formatTime(msg.time) }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Box -->
+        <form class="chat-form" @submit.prevent="sendMessage">
+          <input class="chat-input" v-model="newMessage" @input="notifyTyping" placeholder="Type a message..." />
+          <button class="send-btn" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
