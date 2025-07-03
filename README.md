@@ -68,6 +68,9 @@ The real-time chat UI project itself is a tangible example of contemporary front
 
 ##OUTPUT
 
+![Image](https://github.com/user-attachments/assets/2f4ab589-d629-430f-9e2c-fdb393d8fe04)
+
+![Image](https://github.com/user-attachments/assets/3ed0ceaf-d98b-4810-a304-456fd8b8eae9)
 
     
 
