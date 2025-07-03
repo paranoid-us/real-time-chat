@@ -12,7 +12,7 @@
 
 *MENTOR*: NEELA SANTOSH
 
-##DESCRIPTION OF THE REAL-TIME CHAT APP
+## DESCRIPTION OF THE REAL-TIME CHAT APP
 
 This repository contains a Full-featured Real-Time Chat Application User Interface developed in Vuejs. js 3, HTML5, and CSS3. It seeks to develop–rich, interactive experiences that are pleasing to the eye. At the moment it's just frontend-only project but structured in a way to easily add backend, for example: Node. js and Socket. Because we will add two-way IO in the next tutorial. The app is designed around the concepts of user-friendliness, responsive design, theme handling, local data saving and modular state, and is all done on client side.
 
@@ -66,11 +66,13 @@ This chat frontend works well for:
 
 The real-time chat UI project itself is a tangible example of contemporary frontend engineering. With user-first design principles, responsive layouting, and a scalable Vue.js architecture, it evolved towards a component-based readable chat UI. It is now operational by itself without backend integration, but the component-based nature makes it simple to extend to integrate WebSocket capabilities, database-backed chat histories, user authentication functionality. No matter if you are using this project to advance education, professional prototyping, or even just experimenting with a new passion, the groundwork is sound and based on industry best practices.
 
-##OUTPUT
+# OUTPUT
 
 ![Image](https://github.com/user-attachments/assets/2f4ab589-d629-430f-9e2c-fdb393d8fe04)
 
 ![Image](https://github.com/user-attachments/assets/3ed0ceaf-d98b-4810-a304-456fd8b8eae9)
+
+
 
     
 
